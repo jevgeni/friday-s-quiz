@@ -6,3 +6,9 @@
     (is (easy? "BB"))
     (is (easy? "ABCDACABCAB"))
     (is (easy? "ABCDABCD")))
+
+(deftest hard-sequence
+	(is (not (easy? "D")))
+	(is (not (easy? "DC")))
+	(is (not (easy? "ABDAB")))
+	(is (not (easy? "CBABCBA"))))
