@@ -1,4 +1,5 @@
-(ns fridaysquiz.krypton_factor.core)
+(ns fridaysquiz.krypton_factor.core
+	(:use [clojure.string :only (lower-case)]))
 
 (defn easy-at-index?
 	"Checks the occurence of two adjoing identical subsequences. The first subsequence starts at start-index (inclusive)
@@ -10,12 +11,12 @@
 		(easy-at-index? l start-index (inc start-index)))
 	([l start-index end-index]
 
-	(let [pivot-seq (subs l start-index end-index)
-	      pivot-size (- end-index start-index)
+	(let [pivot-size (- end-index start-index)
 	      adj-start-index (- start-index pivot-size)
 	      adj-end-index (- end-index pivot-size)]
 		(if (>= adj-start-index 0)
-			(let [adjoining-seq (subs l adj-start-index adj-end-index)]
+			(let [pivot-seq (subs l start-index end-index)
+			      adjoining-seq (subs l adj-start-index adj-end-index)]
 				(if (= pivot-seq adjoining-seq)
 					true
 					(recur l (dec start-index) end-index)))
@@ -25,8 +26,9 @@
 	"Detects, if the specified seq contains occurrence of two adjoining identical subsequences. Tries to check for every index
 	and goes from the end to the start."
 	[l]
-	(loop [start-index (dec (count l))]
-		(cond
-			(< start-index 0) false
-			(easy-at-index? l start-index) true
-			:else (recur (dec start-index)))))
+	(let [l (lower-case l)]
+		(loop [start-index (dec (count l))]
+			(cond
+				(< start-index 0) false
+				(easy-at-index? l start-index) true
+				:else (recur (dec start-index))))))

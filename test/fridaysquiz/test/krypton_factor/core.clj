@@ -26,8 +26,8 @@
 	(is (not (easy-at-index? "ABCDABCD" 3 4)))
 	(is (easy-at-index? "ABCDABCD" 7 8)))
 
-;; TODO:
-;; (easy-at-index? "" 0)
-;; case sensitivity
+(deftest easy-corner-cases
+	(is (easy? "bB"))
+	(is (not (easy-at-index? "" 0))))
 
 (run-tests)
