@@ -57,7 +57,9 @@
 	character is the last one in the provided letters list, then pop the last value and change the previous value.
 	For example, if sequence is [A C] and letters are [A B C], then the result is B."
 	[s letters]
-	)
+	(let [last-letter (last s)
+	      next-letter (fnext (drop-while #(not (= % last-letter)) letters))]
+		(conj (pop s) next-letter)))
 
 
 
