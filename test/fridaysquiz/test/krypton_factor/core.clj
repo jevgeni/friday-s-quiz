@@ -15,4 +15,8 @@
 
 (deftest easy-sequence-at-index
 	(is (easy-at-index? "BB" 1 2))
-	(is (not (easy-at-index? "BC" 1 2))))
+	(is (not (easy-at-index? "BC" 1 2)))
+	(is (not (easy-at-index? "BC" 0 1)))
+	(is (not (easy-at-index? "BB" 0 1))))
+
+(run-tests)

@@ -17,7 +17,9 @@
 	(let [pivot-seq (subs l start-index end-index)
 	      size (- end-index start-index)
 	      adj-start-index (- start-index size)
-	      adj-end-index (- end-index size)
-	      adjoining-seq (subs l adj-start-index adj-end-index)]
-		(= pivot-seq adjoining-seq)))
+	      adj-end-index (- end-index size)]
+		(if (>= adj-start-index 0)
+			(let [adjoining-seq (subs l adj-start-index adj-end-index)]
+				(= pivot-seq adjoining-seq))
+			false)))
 
