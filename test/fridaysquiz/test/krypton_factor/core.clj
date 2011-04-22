@@ -1,6 +1,8 @@
 (ns fridaysquiz.test.krypton_factor.core
-	(:use [fridaysquiz.krypton_factor.core])
+	(:use [fridaysquiz.krypton_factor.core] :reload-all)
     (:use [clojure.test]))
 
-(deftest replace-me ;; FIXME: write
-  (is false "No tests have been written."))
+(deftest easy-sequence
+    (is (easy? "BB"))
+    (is (easy? "ABCDACABCAB"))
+    (is (easy? "ABCDABCD")))
