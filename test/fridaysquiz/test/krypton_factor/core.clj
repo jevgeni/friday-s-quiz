@@ -17,6 +17,11 @@
 	(is (easy-at-index? "BB" 1 2))
 	(is (not (easy-at-index? "BC" 1 2)))
 	(is (not (easy-at-index? "BC" 0 1)))
-	(is (not (easy-at-index? "BB" 0 1))))
+	(is (not (easy-at-index? "BB" 0 1)))
+	(is (easy-at-index? "ABAB" 3 4))
+	(is (easy-at-index? "ABCDACABCAB" 10 11))
+	(is (not (easy-at-index? "ABCDACABCAB" 9 10)))
+	(is (not (easy-at-index? "ABCDABCD" 3 4)))
+	(is (easy-at-index? "ABCDABCD" 7 8)))
 
 (run-tests)
