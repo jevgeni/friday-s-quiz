@@ -18,7 +18,7 @@ Some examples of hard sequences are:
 
 Input and Output
 ---
-In order to provide the Quiz Master with a potentially unlimited source of questions you are asked to write a program that will read input lines that contain integers n and L (in that order), where n > 0 and L is in the range   , and for each input line prints out the nth hard sequence (composed of letters drawn from the first L letters in the alphabet), in increasing alphabetical order (alphabetical ordering here corresponds to the normal ordering encountered in a dictionary), followed (on the next line) by the length of that sequence. The first sequence in this ordering is A. You may assume that for given n and L there do exist at least n hard sequences.
+In order to provide the Quiz Master with a potentially unlimited source of questions you are asked to write a program that will read input lines that contain integers n and L (in that order), where n > 0 and L is in the range 1 <= L <= 26, and for each input line prints out the nth hard sequence (composed of letters drawn from the first L letters in the alphabet), in increasing alphabetical order (alphabetical ordering here corresponds to the normal ordering encountered in a dictionary), followed (on the next line) by the length of that sequence. The first sequence in this ordering is A. You may assume that for given n and L there do exist at least n hard sequences.
 For example, with L = 3, the first 7 hard sequences are:
 
 * A
