@@ -30,4 +30,15 @@
 	(is (easy? "bB"))
 	(is (not (easy-at-index? "" 0))))
 
+(deftest permutate-sequence
+	(is (= (promote-seq-down [\B \B] [\B \C]) [\B \B \B]))
+	(is (= (promote-seq-down [\B \B] [\A \B \C]) [\B \B \A]))
+	(is (= (promote-seq-next [\A \A] [\A \B \C]) [\A \B]))
+	;(is (= (extend-seq-next [\A \B] [\A \B \C]) [\A \C]))
+	;(is (= (extend-seq-next [] [\A \B \C]) [\A]))
+	;(is (= (extend-seq-next [\A \C] [\A \B \C]) [\B \A]))
+	)
+
+
+
 (run-tests)
