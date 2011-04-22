@@ -1,5 +1,5 @@
 (ns fridaysquiz.krypton_factor.core
-	(:use [clojure.string :only (lower-case)]))
+	(:use [clojure.string :only (upper-case)]))
 
 (defn easy-at-index?
 	"Checks the occurence of two adjoing identical subsequences. The first subsequence starts at start-index (inclusive)
@@ -26,7 +26,7 @@
 	"Detects, if the specified seq contains occurrence of two adjoining identical subsequences. Tries to check for every index
 	and goes from the end to the start."
 	[l]
-	(let [l (lower-case l)]
+	(let [l (upper-case l)]
 		(loop [start-index (dec (count l))]
 			(cond
 				(< start-index 0) false
