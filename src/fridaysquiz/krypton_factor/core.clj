@@ -38,14 +38,6 @@
 	[l]
 	(not (easy? l)))
 
-(defn hard-seq
-	"Permutates the letters in range of L in increasing alphabetical order, with filtering out 'easy' seqs"
-	[L]
-	(let [letters (map char (range 65 (+ 65 L)))] ;; ascii codes of capital letters
-	      nil))
-
-; (pop (conj [vector] number))
-
 (defn promote-seq-down
 	"Extend sequence down using the provided first letter. If seq is [A B] and first letter is B, then the result
 	will be [A B B]."
@@ -59,9 +51,16 @@
 	[s letters]
 	(let [last-letter (last s)
 	      next-letter (fnext (drop-while #(not (= % last-letter)) letters))]
-		(conj (pop s) next-letter)))
+		(cond
+			(nil? last-letter) []
+			next-letter (conj (pop s) next-letter)
+			:else (recur (pop s) letters))))
 
-
+(defn hard-seq
+	"Permutates the letters in range of L in increasing alphabetical order, with filtering out 'easy' seqs"
+	[L]
+	(let [letters (map char (range 65 (+ 65 L)))] ;; ascii codes of capital letters
+	      nil))
 
 
 
