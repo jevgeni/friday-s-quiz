@@ -32,3 +32,11 @@
 				(< start-index 0) false
 				(easy-at-index? l start-index) true
 				:else (recur (dec start-index))))))
+
+(defn hard? [l]
+	(not (easy? l)))
+
+;; TODO: read-line
+;; TODO: generate seqs and filter them
+;; TODO: wrapper around take and generator
+;; TODO: printout the seq and it's size

@@ -8,10 +8,10 @@
     (is (easy? "ABCDABCD")))
 
 (deftest hard-sequence
-	(is (not (easy? "D")))
-	(is (not (easy? "DC")))
-	(is (not (easy? "ABDAB")))
-	(is (not (easy? "CBABCBA"))))
+	(is (hard? "D"))
+	(is (hard? "DC"))
+	(is (hard? "ABDAB"))
+	(is (hard? "CBABCBA")))
 
 (deftest easy-sequence-at-index
 	(is (easy-at-index? "BB" 1 2))
