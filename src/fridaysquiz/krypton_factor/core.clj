@@ -10,17 +10,16 @@
 	([l start-index]
 		(easy-at-index? l start-index (inc start-index)))
 	([l start-index end-index]
-
-	(let [pivot-size (- end-index start-index)
-	      adj-start-index (- start-index pivot-size)
-	      adj-end-index (- end-index pivot-size)]
-		(if (>= adj-start-index 0)
-			(let [pivot-seq (subs l start-index end-index)
-			      adjoining-seq (subs l adj-start-index adj-end-index)]
-				(if (= pivot-seq adjoining-seq)
-					true
-					(recur l (dec start-index) end-index)))
-			false))))
+		(let [pivot-size (- end-index start-index)
+		      adj-start-index (- start-index pivot-size)
+		      adj-end-index (- end-index pivot-size)]
+			(if (>= adj-start-index 0)
+				(let [pivot-seq (subs l start-index end-index)
+				      adjoining-seq (subs l adj-start-index adj-end-index)]
+					(if (= pivot-seq adjoining-seq)
+						true
+						(recur l (dec start-index) end-index)))
+				false))))
 
 (defn easy?
 	"Detects, if the specified seq contains occurrence of two adjoining identical subsequences. Tries to check for every index
