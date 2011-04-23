@@ -77,7 +77,8 @@
 	"Gets the Nth hard sequence with letters in range of L"
 	[n L]
 	(let [letters (map char (range 65 (+ 65 L)))] ;; ascii codes of capital letters
-	      (nth (permutated-lazy-seq letters) (dec n))))
+		(when (> n 0)
+	        (nth (permutated-lazy-seq letters) (dec n) nil))))
 
 
 ;; TODO: read-line
