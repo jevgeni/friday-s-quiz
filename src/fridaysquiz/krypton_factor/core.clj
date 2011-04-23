@@ -63,7 +63,10 @@
 	      nil))
 
 (defn permutated-lazy-seq
-	"A lazy sequence of permutated letters increasing alphabetical order, forming a 'hard' sequence"
+	"A lazy sequence of permutated letters increasing alphabetical order, forming a 'hard' sequence. If 2 arg version
+	is used, then start-seq must not be empty."
+	([letters]
+		(permutated-lazy-seq (promote-seq-down [] letters) letters))
 	([start-seq letters]
 		(let [step (fn [current-seq letters]
 		                ;; TODO: replace easy/hard to work with seq instead of strings?
@@ -77,7 +80,7 @@
 			(lazy-seq (step start-seq letters)))))
 
 
+
 ;; TODO: read-line
-;; TODO: generate seqs and filter them
 ;; TODO: wrapper around take and generator
 ;; TODO: printout the seq and it's size
