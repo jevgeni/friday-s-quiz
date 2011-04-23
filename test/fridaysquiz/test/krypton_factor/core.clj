@@ -11,7 +11,8 @@
 	(is (hard? "D"))
 	(is (hard? "DC"))
 	(is (hard? "ABDAB"))
-	(is (hard? "CBABCBA")))
+	(is (hard? "CBABCBA"))
+	(is (not (hard-at-last-index? "ABCDABCD"))))
 
 (deftest easy-sequence-at-index
 	(is (easy-at-index? "BB" 1 2))

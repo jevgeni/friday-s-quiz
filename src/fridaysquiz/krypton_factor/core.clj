@@ -22,6 +22,11 @@
 						(recur l (dec start-index) end-index)))
 				false))))
 
+(defn hard-at-last-index?
+	"checks if the sequence hard when using last index as a pivot point"
+	[l]
+	(not (easy-at-index? l (dec (count l)))))
+
 (defn easy?
 	"Detects, if the specified seq contains occurrence of two adjoining identical subsequences.
 	Tries to check for every index and goes from the end to the start."
@@ -67,7 +72,7 @@
 						(let [current-string (reduce str "" current-seq)]
 							(cond
 								(empty? current-string) nil
-								(hard? current-string)
+								(hard-at-last-index? current-string)
 									(cons current-string
 									      (permutated-lazy-seq (promote-seq-down current-seq letters) letters))
 								:else (recur (promote-seq-next current-seq letters) letters))))]
