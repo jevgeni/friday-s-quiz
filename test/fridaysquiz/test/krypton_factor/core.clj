@@ -38,6 +38,7 @@
 	(is (= (promote-seq-next [\A \C] [\A \B \C]) [\B]))
 	(is (= (promote-seq-next [\C \C] [\A \B \C]) [])))
 
-
+(deftest permutated-lazy-sed
+	(is (= (take 10 (permutated-lazy-seq [\A] [\A \B])) ["A" "AB" "ABA" "B" "BA" "BAB"])))
 
 (run-tests)

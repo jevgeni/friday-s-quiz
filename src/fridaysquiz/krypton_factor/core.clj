@@ -62,6 +62,19 @@
 	(let [letters (map char (range 65 (+ 65 L)))] ;; ascii codes of capital letters
 	      nil))
 
+(defn permutated-lazy-seq
+	"A lazy sequence of permutated letters increasing alphabetical order, forming a 'hard' sequence"
+	([start-seq letters]
+		(let [step (fn [current-seq letters]
+		                ;; TODO: replace easy/hard to work with seq instead of strings?
+						(let [current-string (reduce str "" current-seq)]
+							(cond
+								(empty? current-string) nil
+								(hard? current-string)
+									(cons current-string
+									      (permutated-lazy-seq (promote-seq-down current-seq letters) letters))
+								:else (recur (promote-seq-next current-seq letters) letters))))]
+			(lazy-seq (step start-seq letters)))))
 
 
 ;; TODO: read-line
