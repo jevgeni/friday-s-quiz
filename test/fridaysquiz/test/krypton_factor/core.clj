@@ -40,7 +40,10 @@
 
 (deftest permutated-lazy-sed
 	(is (= (take 10 (permutated-lazy-seq [\A] [\A \B])) ["A" "AB" "ABA" "B" "BA" "BAB"]))
-	(is (= (take 10 (permutated-lazy-seq [\A \B])) ["A" "AB" "ABA" "B" "BA" "BAB"]))
-	)
+	(is (= (take 10 (permutated-lazy-seq [\A \B])) ["A" "AB" "ABA" "B" "BA" "BAB"])))
+
+(deftest get-hard-sequence
+	(is (= (hard-seq 1 2) "A"))
+	(is (= (hard-seq 3 2) "ABA")))
 
 (run-tests)

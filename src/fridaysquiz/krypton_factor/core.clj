@@ -56,12 +56,6 @@
 			next-letter (conj (pop s) next-letter)
 			:else (recur (pop s) letters))))
 
-(defn hard-seq
-	"Permutates the letters in range of L in increasing alphabetical order, with filtering out 'easy' seqs"
-	[L]
-	(let [letters (map char (range 65 (+ 65 L)))] ;; ascii codes of capital letters
-	      nil))
-
 (defn permutated-lazy-seq
 	"A lazy sequence of permutated letters increasing alphabetical order, forming a 'hard' sequence. If 2 arg version
 	is used, then start-seq must not be empty."
@@ -79,6 +73,11 @@
 								:else (recur (promote-seq-next current-seq letters) letters))))]
 			(lazy-seq (step start-seq letters)))))
 
+(defn hard-seq
+	"Gets the Nth hard sequence with letters in range of L"
+	[n L]
+	(let [letters (map char (range 65 (+ 65 L)))] ;; ascii codes of capital letters
+	      (nth (permutated-lazy-seq letters) (dec n))))
 
 
 ;; TODO: read-line
