@@ -85,7 +85,8 @@
 	If there are more than 16 such groups, start a new line for the 17th group"
 	[s]
 	(let [grouped-chars (partition-all 4 s)
-	      grouped-strings (map #(reduce str %) grouped-chars)]
-		(reduce str (interpose " " grouped-strings))))
+	      grouped-strings (map #(reduce str "" %) grouped-chars)
+	      grouped-new-lined-strings (interpose "\n" (partition-all 16 grouped-strings))]
+		(reduce str "" (flatten (map #(interpose " " %) grouped-new-lined-strings)))))
 
 ;; TODO: printout the seq and it's size

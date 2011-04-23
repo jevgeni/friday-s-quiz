@@ -53,6 +53,10 @@
 	(is (= (seq-pretty-print "ABCDEF") "ABCD EF"))
 	(is (= (seq-pretty-print "ABCDEFABCDEFABCDEF") "ABCD EFAB CDEF ABCD EF"))
 	(is (= (seq-pretty-print "") ""))
+	(is (= (seq-pretty-print (str "ABCDEFABCDEFABCDEFABCDEFABCDE" ; 7 groups
+								  "ABCDEFABCDEFABCDEFABCDEFABCDE"
+								  "ABCDEFABCDEFABCDEFABCDEFABC"))
+			"ABCD EFAB CDEF ABCD EFAB CDEF ABCD EABC DEFA BCDE FABC DEFA BCDE FABC DEAB CDEF\nABCD EFAB CDEF ABCD EFAB C"))
 	)
 
 (run-tests)
