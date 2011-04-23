@@ -46,6 +46,7 @@
 	(is (= (hard-seq 1 2) "A"))
 	(is (= (hard-seq 3 2) "ABA"))
 	(is (= (hard-seq -100 2) nil))
-	(is (= (hard-seq 10 2) nil)))
+	(is (= (hard-seq 10 2) nil))
+	(is (= (hard-seq 7 3)) "ABACABA"))
 
 (run-tests)
