@@ -93,4 +93,18 @@
 	      grouped-new-lined-strings (interpose "\n" (partition-all 16 grouped-strings))]
 		(reduce str "" (flatten (map #(interpose " " %) grouped-new-lined-strings)))))
 
-;; TODO: printout the seq and it's size
+
+
+(defn krypton-factor
+	"Prints out the hard sequence according to the provided input and on the next line prints the length of that
+	 sequence.
+	 Example invocations:
+	 (krypton-factor 1000 26)
+	 (krypton-factor 7 3)
+	 (krypton-factor 0 1)
+	 "
+	[n L]
+	(let [hard-one (hard-seq n L)]
+		(println (seq-pretty-print hard-one))
+		(println (count hard-one))))
+
