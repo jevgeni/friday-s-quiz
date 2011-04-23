@@ -49,4 +49,9 @@
 	(is (= (hard-seq 10 2) nil))
 	(is (= (hard-seq 7 3)) "ABACABA"))
 
+(deftest sequence-pretty-printing
+	(is (= (seq-pretty-print "ABCDEF") "ABCD EF"))
+	(is (= (seq-pretty-print "ABCDEFABCDEFABCDEF") "ABCD EFAB CDEF ABCD EF"))
+	)
+
 (run-tests)

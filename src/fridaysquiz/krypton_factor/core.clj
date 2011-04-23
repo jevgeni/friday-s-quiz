@@ -80,7 +80,12 @@
 		(when (> n 0)
 	        (nth (permutated-lazy-seq letters) (dec n) nil))))
 
+(defn seq-pretty-print
+	"Pretty prints the specified sequence. Split it into groups of four (4) characters separated by a space.
+	If there are more than 16 such groups, start a new line for the 17th group"
+	[s]
+	(let [grouped-chars (partition-all 4 s)
+	      grouped-strings (map #(reduce str %) grouped-chars)]
+		(reduce str (interpose " " grouped-strings))))
 
-;; TODO: read-line
-;; TODO: wrapper around take and generator
 ;; TODO: printout the seq and it's size
