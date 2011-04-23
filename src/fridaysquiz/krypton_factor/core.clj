@@ -11,12 +11,13 @@
 	([l start-index]
 		(easy-at-index? l start-index (inc start-index)))
 	([l start-index end-index]
-		(let [pivot-size (- end-index start-index)
+		(let [l (vec l) ;; in case string is passed
+			  pivot-size (- end-index start-index)
 		      adj-start-index (- start-index pivot-size)
 		      adj-end-index (- end-index pivot-size)]
 			(if (>= adj-start-index 0)
-				(let [pivot-seq (subs l start-index end-index)
-				      adjoining-seq (subs l adj-start-index adj-end-index)]
+				(let [pivot-seq (subvec l start-index end-index)
+				      adjoining-seq (subvec l adj-start-index adj-end-index)]
 					(if (= pivot-seq adjoining-seq)
 						true
 						(recur l (dec start-index) end-index)))
@@ -68,14 +69,12 @@
 		(permutated-lazy-seq (promote-seq-down [] letters) letters))
 	([start-seq letters]
 		(let [step (fn [current-seq letters]
-		                ;; TODO: replace easy/hard to work with seq instead of strings?
-						(let [current-string (reduce str "" current-seq)]
-							(cond
-								(empty? current-string) nil
-								(hard-at-last-index? current-string)
-									(cons current-string
-									      (permutated-lazy-seq (promote-seq-down current-seq letters) letters))
-								:else (recur (promote-seq-next current-seq letters) letters))))]
+						(cond
+							(empty? current-seq) nil
+							(hard-at-last-index? current-seq)
+								(cons current-seq
+									  (permutated-lazy-seq (promote-seq-down current-seq letters) letters))
+							:else (recur (promote-seq-next current-seq letters) letters)))]
 			(lazy-seq (step start-seq letters)))))
 
 (defn hard-seq

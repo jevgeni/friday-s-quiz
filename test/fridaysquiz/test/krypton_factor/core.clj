@@ -40,15 +40,15 @@
 	(is (= (promote-seq-next [\C \C] [\A \B \C]) [])))
 
 (deftest permutated-lazy-sed
-	(is (= (take 10 (permutated-lazy-seq [\A] [\A \B])) ["A" "AB" "ABA" "B" "BA" "BAB"]))
-	(is (= (take 10 (permutated-lazy-seq [\A \B])) ["A" "AB" "ABA" "B" "BA" "BAB"])))
+	(is (= (take 10 (permutated-lazy-seq [\A] [\A \B])) (map vec ["A" "AB" "ABA" "B" "BA" "BAB"])))
+	(is (= (take 10 (permutated-lazy-seq [\A \B])) (map vec ["A" "AB" "ABA" "B" "BA" "BAB"]))))
 
 (deftest get-hard-sequence
-	(is (= (hard-seq 1 2) "A"))
-	(is (= (hard-seq 3 2) "ABA"))
+	(is (= (hard-seq 1 2) (vec "A")))
+	(is (= (hard-seq 3 2) (vec "ABA")))
 	(is (= (hard-seq -100 2) nil))
 	(is (= (hard-seq 10 2) nil))
-	(is (= (hard-seq 7 3)) "ABACABA"))
+	(is (= (hard-seq 7 3) (vec "ABACABA"))))
 
 (deftest sequence-pretty-printing
 	(is (= (seq-pretty-print "ABCDEF") "ABCD EF"))
