@@ -52,6 +52,7 @@
 (deftest sequence-pretty-printing
 	(is (= (seq-pretty-print "ABCDEF") "ABCD EF"))
 	(is (= (seq-pretty-print "ABCDEFABCDEFABCDEF") "ABCD EFAB CDEF ABCD EF"))
+	(is (= (seq-pretty-print "") ""))
 	)
 
 (run-tests)
